@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 ---@alias key_bind {key: string, mods: string|nil, action: any}
 ---@alias key_table key_bind[]
----@alias mode { name: string, key_table_name: string, hint: string | nil, bg_color: string, fg_color: string}
+---@alias mode { name: string, key_table_name: string, hint: string | nil, fg_color: string, bg_color: string}
 
 -- map from key_table_name to mode
 ---@type table<string, mode>
@@ -21,10 +21,11 @@ end
 
 ---@param name string
 ---@param key_table key_table
----@param color string
+---@param fg_color string
+---@param bg_color string
 ---@param key_table_name? string
-local function add_mode(name, key_table, color, key_table_name)
-	table.insert(modes, { name = name, key_table_name = key_table_name, color = color })
+local function add_mode(name, key_table, fg_color, bg_color, key_table_name)
+	table.insert(modes, { name = name, key_table_name = key_table_name, fg_color = fg_color, bg_color = bg_color })
 	if key_table_name then
 		key_tables[key_table_name] = key_table
 	else
