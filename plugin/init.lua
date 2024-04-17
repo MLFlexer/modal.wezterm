@@ -2,13 +2,14 @@ local wezterm = require("wezterm")
 
 ---@alias key_bind {key: string, mods: string|nil, action: any}
 ---@alias key_table key_bind[]
----@alias key_tables key_table[]
 ---@alias mode { name: string, key_table_name: string, hint: string | nil, bg_color: string, fg_color: string}
 
+-- map from key_table_name to mode
 ---@type table<string, mode>
 local modes = {}
 
----@type key_tables
+-- map from key_table_name to key_table
+---@type table<string, key_table>
 local key_tables = {}
 
 ---@param window any
