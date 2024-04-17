@@ -13,4 +13,11 @@ local function get_mode(window)
 	local active_key_table = window:active_key_table()
 	return active_key_table.name
 end
+
+---@param name string
+---@param key_table key_table
+---@param color string
+local function add_mode(name, key_table, color)
+	table.insert(modes, { name = name, key_table = key_table, color = color })
+end
 ---@param window any
