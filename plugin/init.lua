@@ -36,6 +36,10 @@ end
 ---@param window any
 ---@param formatter? fun(mode: mode): string
 local function get_mode_formatted(window, formatter)
+	if not get_mode(window) then
+		return
+	end
+
 	local mode = modes[get_mode(window)]
 	if mode then
 		local status
