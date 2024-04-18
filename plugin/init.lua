@@ -41,32 +41,30 @@ end
 ---@param window any
 ---@param formatter? fun(mode: mode): string
 local function get_mode_formatted(window, formatter)
-	if not get_mode(window) then
-		return
+	local mode = get_mode(window)
+	if mode == nil then
+		return ""
 	end
 
-	local mode = modes[get_mode(window)]
-	if mode then
-		local status
+	local status
 
-		-- checks if formatter is nil
-		if formatter then
-			status = formatter(mode)
-		else
-			status = wezterm.format({
-				{ Foreground = { Color = mode.fg_color } },
-				{ Background = { Color = mode.bg_color } },
-				{ Text = wezterm.nerdfonts.ple_left_half_circle_thick },
-				{ Attribute = { Intensity = "Bold" } },
-				{ Foreground = { Color = mode.bg_color } },
-				{ Background = { Color = mode.fg_color } },
-				{ Text = mode.name .. "  " },
-			})
-		end
-		return status
+	-- checks if formatter is nil
+	if formatter then
+		status = formatter(mode)
+	else
+		status = wezterm.format({
+			{ Foreground = { Color = mode.fg_color } },
+			{ Text = wezterm.nerdfonts.ple_left_half_circle_thick },
+			{ Attribute = { Intensity = "Bold" } },
+			{ Foreground = { Color = mode.bg_color } },
+			{ Background = { Color = mode.fg_color } },
+			{ Text = mode.name .. "  " },
+		})
 	end
+	return status
 end
 
+---adds a formatted hint string to the mode
 return {
 	get_mode_formatted = get_mode_formatted,
 	add_mode = add_mode,
