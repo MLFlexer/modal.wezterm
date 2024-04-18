@@ -13,10 +13,13 @@ local modes = {}
 local key_tables = {}
 
 ---@param window any
----@return string
+---@return mode | nil
 local function get_mode(window)
 	local active_key_table = window:active_key_table()
-	return active_key_table.name
+
+	if active_key_table then
+		return modes[active_key_table]
+	end
 end
 
 ---@param name string
