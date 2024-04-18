@@ -32,7 +32,7 @@ local function get_hint_status_text(hint_icons, hint_colors, mode_colors)
 		{ Text = hint_icons.key_hint_seperator },
 		-- ...
 		{ Foreground = { Color = hint_colors.key } },
-		{ Text = "p/n: " },
+		{ Text = "{/}, p/n: " },
 		{ Foreground = { Color = hint_colors.hint } },
 		{ Text = "Prev/Next prompt" },
 		{ Foreground = { Color = hint_colors.key_hint_seperator } },
@@ -107,6 +107,8 @@ return {
 
 		{ key = "p", action = act.ScrollToPrompt(-1) },
 		{ key = "n", action = act.ScrollToPrompt(1) },
+		{ key = "{", action = act.ScrollToPrompt(-1) },
+		{ key = "}", action = act.ScrollToPrompt(1) },
 
 		{ key = "g", action = act.ScrollToTop },
 		{ key = "G", mods = "SHIFT", action = act.ScrollToBottom },
