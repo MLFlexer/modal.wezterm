@@ -28,10 +28,12 @@ end
 ---@param bg_color string
 ---@param key_table_name? string
 local function add_mode(name, key_table, fg_color, bg_color, key_table_name)
-	table.insert(modes, { name = name, key_table_name = key_table_name, fg_color = fg_color, bg_color = bg_color })
 	if key_table_name then
+		modes[key_table_name] =
+			{ name = name, key_table_name = key_table_name, fg_color = fg_color, bg_color = bg_color }
 		key_tables[key_table_name] = key_table
 	else
+		modes[name] = { name = name, key_table_name = name, fg_color = fg_color, bg_color = bg_color }
 		key_tables[name] = key_table
 	end
 end
