@@ -60,12 +60,17 @@ I have included some default modes which are opt-in as to improve performance fo
 
 ### UI mode
 UI mode has vim-like bindings to navigate and modify panes, tabs and other UI elements.
+![image](https://github.com/MLFlexer/modal.wezterm/assets/75012728/2ebd4201-f6ec-4183-9d53-e2ced7b2eaaa)
 
 ### Scroll mode
 In scroll mode you can scroll with familiar vim bindings.
+![image](https://github.com/MLFlexer/modal.wezterm/assets/75012728/498bb40e-ce9c-4695-923a-227fc60a3619)
 
 ### Search & Copy modes
 This only provides an option to add hints or mode indicator to Wezterms buildin Search and Copy modes. i.e. no keybinds are added!
+![image](https://github.com/MLFlexer/modal.wezterm/assets/75012728/b3cd14be-974b-4bd8-be98-8ab04404caee)
+
+![image](https://github.com/MLFlexer/modal.wezterm/assets/75012728/d93d8aab-936d-4a1d-a084-0e1616b52665)
 
 ### Enabling default modes
 If you want to enable a default mode, then you can add the following:
