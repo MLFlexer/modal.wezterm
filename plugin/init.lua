@@ -6,7 +6,10 @@ local wezterm = require("wezterm")
 
 -- map from key_table_name to mode
 ---@type table<string, mode>
-local modes = {}
+local modes = {
+	copy_mode = { name = "copy_mode", key_table_name = "copy_mode", status_text = "Copy" },
+	search_mode = { name = "search_mode", key_table_name = "search_mode", status_text = "Search" },
+}
 
 -- map from key_table_name to key_table
 ---@type table<string, key_table>
@@ -27,6 +30,10 @@ end
 ---@param key_table_name? string
 ---@param status_text? string
 local function add_mode(name, key_table, status_text, key_table_name)
+	if name == "copy_mode" or name == "search_mode" then
+		modes[name].status_text = status_text
+		return
+	end
 	if key_table_name then
 		modes[key_table_name] = { name = name, key_table_name = key_table_name, status_text = status_text }
 		key_tables[key_table_name] = key_table
