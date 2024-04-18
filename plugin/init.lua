@@ -82,10 +82,58 @@ local function get_hints_formatted(window)
 
 	return mode.hint
 end
+
+---Helper function to create formatted hints
+---@param keys {text: string, bg: string, fg: string}
+---@param hints {text: string, bg: string, fg: string}
+---@param key_hint_seperator {text: string, bg: string, fg: string}
+---@param left_seperator {text: string, bg: string, fg: string}
+---@param mods? {text: string, bg: string, fg: string}
+---@return string
+local function create_hint(left_seperator, keys, key_hint_seperator, hints, mods)
+	if mods then
+		return wezterm.format({
+			{ Foreground = { Color = left_seperator.fg } },
+			{ Background = { Color = left_seperator.bg } },
+			{ Text = left_seperator.text },
+			{ Foreground = { Color = mods.fg } },
+			{ Background = { Color = mods.bg } },
+			{ Text = mods.text },
+			{ Foreground = { Color = keys.fg } },
+			{ Background = { Color = keys.bg } },
+			{ Text = keys.text },
+			{ Foreground = { Color = key_hint_seperator.fg } },
+			{ Background = { Color = key_hint_seperator.bg } },
+			{ Text = key_hint_seperator.text },
+			{ Foreground = { Color = hints.fg } },
+			{ Background = { Color = hints.bg } },
+			{ Text = hints.text },
+		})
+	else
+		return wezterm.format({
+			{ Foreground = { Color = left_seperator.fg } },
+			{ Background = { Color = left_seperator.bg } },
+			{ Text = left_seperator.text },
+			{ Foreground = { Color = keys.fg } },
+			{ Background = { Color = keys.bg } },
+			{ Text = keys.text },
+			{ Foreground = { Color = key_hint_seperator.fg } },
+			{ Background = { Color = key_hint_seperator.bg } },
+			{ Text = key_hint_seperator.text },
+			{ Foreground = { Color = hints.fg } },
+			{ Background = { Color = hints.bg } },
+			{ Text = hints.text },
+		})
+	end
+end
+
 return {
 	get_mode_formatted = get_mode_formatted,
 	add_mode = add_mode,
 	get_mode = get_mode,
+	get_hints_formatted = get_hints_formatted,
+	add_formatted_hint = add_formatted_hint,
+	create_hint = create_hint,
 	modes = modes,
 	key_tables = key_tables,
 }
