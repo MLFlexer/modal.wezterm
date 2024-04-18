@@ -64,6 +64,9 @@ UI mode has vim-like bindings to navigate and modify panes, tabs and other UI el
 ### Scroll mode
 In scroll mode you can scroll with familiar vim bindings.
 
+### Search & Copy modes
+This only provides an option to add hints or mode indicator to Wezterms buildin Search and Copy modes. i.e. no keybinds are added!
+
 ### Enabling default modes
 If you want to enable a default mode, then you can add the following:
 ```lua
