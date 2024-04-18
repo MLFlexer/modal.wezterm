@@ -1,6 +1,12 @@
 # modal.wezterm
 Vim-like modal keybindings for your terminal! ✌️
 
+## Overview
+Add keybindings which operate with vim-like modal bindings to accelerate your workflow.
+This plugin adds great opt-in default modes along with optional visual indicators and hints for the keybindings.
+
+Here is a demo of the default UI mode:
+
 ![demo of UI mode](https://github.com/MLFlexer/modal.wezterm/assets/75012728/84e5860a-5659-43d9-af51-bb2942b005a6)
 
 ## Default modes
