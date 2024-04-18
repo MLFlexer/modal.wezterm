@@ -41,7 +41,9 @@ modal.apply_to_config(config)
 local wezterm = require("wezterm")
 local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm")
 ```
-2. Add your mode
+2. Add your own mode
+
+*There are more examples of key tables and status texts with and without hints in the `/defaults` directory.*
 ```lua
 -- example key table
 local key_table = {
