@@ -44,7 +44,11 @@ config.keys = {
   }
 }
 ```
-4. Change right status text when entering/leaving mode
+4. Add the modes to your config
+```lua
+config.key_tables = modal.key_tables
+```
+5. Change right status text when entering/leaving mode
 ```lua
 wezterm.on("update-right-status", function(window, _)
 	modal.set_right_status(window)
@@ -53,6 +57,12 @@ end)
 
 ## Default modes
 I have included some default modes which are opt-in as to improve performance for all users.
+
+### UI mode
+UI mode has vim-like bindings to navigate and modify panes, tabs and other UI elements.
+
+### Scroll mode
+In scroll mode you can scroll with familiar vim bindings.
 
 ### Enabling default modes
 If you want to enable a default mode, then you can add the following:
@@ -90,6 +100,7 @@ config.keys = {
 		}),
   }
 }
+config.key_tables = modal.key_tables
 ```
 Checkout the specific lua files to see the keybindings and what functionality each mode exports
 
