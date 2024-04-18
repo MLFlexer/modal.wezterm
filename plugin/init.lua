@@ -85,6 +85,69 @@ local function set_right_status(window)
 	end
 end
 
+local function apply_to_config(config)
+	enable_defaults("https://github.com/MLFlexer/modal.wezterm")
+	local icons = {
+		left_seperator = wezterm.nerdfonts.ple_left_half_circle_thick,
+		key_hint_seperator = "  ",
+		mod_seperator = "-",
+	}
+	local colors = {
+		key_hint_seperator = config.colors.tab_bar.active_tab.fg_color,
+		key = config.colors.tab_bar.active_tab.fg_color,
+		hint = config.colors.tab_bar.active_tab.fg_color,
+		bg = config.colors.tab_bar.active_tab.bg_color,
+		left_bg = config.colors.tab_bar.background,
+	}
+
+	local status_text = require("ui_mode").get_hint_status_text(
+		icons,
+		colors,
+		{ bg = config.colors.ansi[2], fg = config.colors.tab_bar.active_tab.bg_color }
+	)
+
+	add_mode("UI", require("ui_mode").key_table, status_text)
+
+	status_text = require("scroll_mode").get_hint_status_text(
+		icons,
+		colors,
+		{ bg = config.colors.ansi[7], fg = config.colors.tab_bar.active_tab.bg_color }
+	)
+	add_mode("Scroll", require("scroll_mode").key_table, status_text)
+
+	status_text = require("copy_mode").get_hint_status_text(
+		icons,
+		colors,
+		{ bg = config.colors.ansi[4], fg = config.colors.tab_bar.active_tab.bg_color }
+	)
+	add_mode("copy_mode", {}, status_text)
+
+	status_text = require("search_mode").get_hint_status_text(
+		icons,
+		colors,
+		{ bg = config.colors.ansi[6], fg = config.colors.tab_bar.active_tab.bg_color }
+	)
+	add_mode("search_mode", {}, status_text)
+
+	config.key_tables = key_tables
+	table.insert(config.keys, {
+		key = "n",
+		mods = "ALT",
+		action = wezterm.action.ActivateKeyTable({
+			name = "Scroll",
+			one_shot = false,
+		}),
+	})
+	table.insert(config.keys, {
+		key = "u",
+		mods = "ALT",
+		action = wezterm.action.ActivateKeyTable({
+			name = "UI",
+			one_shot = false,
+		}),
+	})
+end
+
 return {
 	set_right_status = set_right_status,
 	add_mode = add_mode,
@@ -93,4 +156,5 @@ return {
 	modes = modes,
 	key_tables = key_tables,
 	enable_defaults = enable_defaults,
+	apply_to_config = apply_to_config,
 }
