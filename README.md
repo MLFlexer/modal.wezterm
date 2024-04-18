@@ -26,6 +26,16 @@ This only provides an option to add hints or mode indicator to Wezterms buildin 
 ![image](https://github.com/MLFlexer/modal.wezterm/assets/75012728/477089b8-ae80-4f3b-821c-bb29c545408c)
 
 ## Setup
+It is recommended to do the setup with some [Customization](###Customization). However if you just want to try it out you can follow the [Preset](###Preset)
+### Preset
+Add the following to the bottom of your config:
+```lua
+local wezterm = require("wezterm")
+local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm")
+modal.apply_to_config(config)
+```
+
+### Customization
 1. Require the plugin:
 ```lua
 local wezterm = require("wezterm")
