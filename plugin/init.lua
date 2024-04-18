@@ -69,7 +69,17 @@ local function enable_defaults(url)
 	package.path = package.path .. ";" .. plugin.plugin_dir .. "/defaults/?.lua"
 end
 
+---sets the current modal status to the right status
+---@param window any
+local function set_right_status(window)
+	local mode = get_mode(window)
+	if mode then
+		window:set_right_status(mode.status_text)
+	end
+end
+
 return {
+	set_right_status = set_right_status,
 	add_mode = add_mode,
 	get_mode = get_mode,
 	create_status_text = create_status_text,
