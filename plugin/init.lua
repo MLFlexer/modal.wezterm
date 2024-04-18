@@ -36,51 +36,6 @@ local function add_mode(name, key_table, status_text, key_table_name)
 	end
 end
 
----@param window any
----@param formatter? fun(mode: mode): string
-local function get_mode_formatted(window, formatter)
-	local mode = get_mode(window)
-	if mode == nil then
-		return ""
-	end
-
-	local status
-
-	-- checks if formatter is nil
-	if formatter then
-		status = formatter(mode)
-	else
-		status = wezterm.format({
-			{ Foreground = { Color = mode.fg_color } },
-			{ Text = wezterm.nerdfonts.ple_left_half_circle_thick },
-			{ Attribute = { Intensity = "Bold" } },
-			{ Foreground = { Color = mode.bg_color } },
-			{ Background = { Color = mode.fg_color } },
-			{ Text = mode.name .. "  " },
-		})
-	end
-	return status
-end
-
----adds a formatted hint string to the mode
----@param name string
----@param formatted_hint string
-local function add_formatted_hint(name, formatted_hint)
-	modes[name].hint = formatted_hint
-end
-
----returns a string of any hints
----@param window any
----@return string
-local function get_hints_formatted(window)
-	local mode = get_mode(window)
-	if mode == nil then
-		return ""
-	end
-
-	return mode.hint
-end
-
 ---Wrapper for creating a simple status text
 ---@param left_seperator {text: string, bg: string, fg: string}
 ---@param key_hints {text: string, bg: string, fg: string}
@@ -104,12 +59,8 @@ local function create_status_text(left_seperator, key_hints, mode)
 end
 
 return {
-	get_mode_formatted = get_mode_formatted,
 	add_mode = add_mode,
 	get_mode = get_mode,
-	get_hints_formatted = get_hints_formatted,
-	add_formatted_hint = add_formatted_hint,
-	create_hint = create_hint,
 	create_status_text = create_status_text,
 	modes = modes,
 	key_tables = key_tables,
