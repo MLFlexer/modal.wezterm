@@ -65,6 +65,12 @@ local function get_mode_formatted(window, formatter)
 end
 
 ---adds a formatted hint string to the mode
+---@param name string
+---@param formatted_hint string
+local function add_formatted_hint(name, formatted_hint)
+	modes[name].hint = formatted_hint
+end
+
 return {
 	get_mode_formatted = get_mode_formatted,
 	add_mode = add_mode,
