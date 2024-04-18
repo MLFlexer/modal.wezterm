@@ -17,7 +17,6 @@ In scroll mode you can scroll with familiar vim bindings.
 ### Search & Copy modes
 This only provides an option to add hints or mode indicator to Wezterms buildin Search and Copy modes. i.e. no keybinds are added!
 ![image](https://github.com/MLFlexer/modal.wezterm/assets/75012728/51292957-4580-494b-aedf-9b84cdf81e41)
-
 ![image](https://github.com/MLFlexer/modal.wezterm/assets/75012728/477089b8-ae80-4f3b-821c-bb29c545408c)
 
 ## Setup
