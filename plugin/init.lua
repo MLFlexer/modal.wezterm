@@ -58,10 +58,22 @@ local function create_status_text(left_seperator, key_hints, mode)
 	})
 end
 
+local function enable_defaults(url)
+	local plugin
+	for _, p in ipairs(wezterm.plugin.list()) do
+		if p.url == url then
+			plugin = p
+			break
+		end
+	end
+	package.path = package.path .. ";" .. plugin.plugin_dir .. "/defaults/?.lua"
+end
+
 return {
 	add_mode = add_mode,
 	get_mode = get_mode,
 	create_status_text = create_status_text,
 	modes = modes,
 	key_tables = key_tables,
+	enable_defaults = enable_defaults,
 }
