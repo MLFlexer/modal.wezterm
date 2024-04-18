@@ -1,7 +1,8 @@
 # modal.wezterm
 Vim-like modal keybindings for your terminal! ✌️
 
-demo gif
+![demo of UI mode](https://github.com/MLFlexer/modal.wezterm/assets/75012728/84e5860a-5659-43d9-af51-bb2942b005a6)
+
 
 ## Setup
 1. Require the plugin:
