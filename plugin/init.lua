@@ -23,7 +23,7 @@ local function get_mode(window)
 end
 
 ---@param name string
----@param key_table key_table
+---@param key_table {key: string, mods: string|nil, action: any}[]
 ---@param key_table_name? string
 ---@param status_text? string
 local function add_mode(name, key_table, status_text, key_table_name)
