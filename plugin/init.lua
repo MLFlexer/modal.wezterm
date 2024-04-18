@@ -71,6 +71,17 @@ local function add_formatted_hint(name, formatted_hint)
 	modes[name].hint = formatted_hint
 end
 
+---returns a string of any hints
+---@param window any
+---@return string
+local function get_hints_formatted(window)
+	local mode = get_mode(window)
+	if mode == nil then
+		return ""
+	end
+
+	return mode.hint
+end
 return {
 	get_mode_formatted = get_mode_formatted,
 	add_mode = add_mode,
