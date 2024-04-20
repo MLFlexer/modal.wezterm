@@ -47,8 +47,8 @@ local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm"
 ```lua
 -- example key table
 local key_table = {
-		{ key = "Escape", action = "PopKeyTable" },
-		{ key = "c", mods = "CTRL", action = "PopKeyTable" },
+		{ key = "Escape", action = modal.exit_mode("mode_name") },
+		{ key = "c", mods = "CTRL", action = modal.exit_mode("mode_name") },
 		{ key = "z", action = wezterm.action.TogglePaneZoomState },
   }
 -- example right status text
@@ -70,11 +70,8 @@ config.keys = {
   {
 		key = "m",
 		mods = "ALT",
-		action = act.ActivateKeyTable({
-			name = "mode_name",
-			one_shot = false,
-		}),
-  }
+		action = activate_mode("mode_name"),
+	}
 }
 ```
 4. Add the modes to your config
@@ -119,17 +116,14 @@ config.keys = {
   {
 		key = "u",
 		mods = "ALT",
-		action = act.ActivateKeyTable({
-			name = "UI",
-			one_shot = false,
-		}),
+		action = activate_mode("UI"),
   }
 }
 config.key_tables = modal.key_tables
 ```
 Checkout the specific lua files to see the keybindings and what functionality each mode exports
 
-### Adding custom right status
+### Adding custom right status text
 To add a custom right status you can use the [wezterm.format()](https://wezfurlong.org/wezterm/config/lua/wezterm/format.html) function to create a formatted string. You can then add it as an argument when you add your mode:
 ```lua
 local custom_status = wezterm.format({
@@ -142,9 +136,21 @@ local custom_status = wezterm.format({
 })
 modal.add_mode("mode_name", key_table, custom_status)
 ```
+You should then add the text to your right status by following the steps in the next paragraph
+### Update right status on mode change
+#### *Recommended:* Using enter and exit events
+You can use the `modal.enter` and `modal.exit` events to set the right status:
+```lua
+wezterm.on("modal.enter", function(name, window, pane)
+	modal.set_right_status(window, name)
+end)
 
-### Show other text than only modes in right status
-You can show some other text in the right status by making a simple if statement in your `wezterm.on` function:
+wezterm.on("modal.exit", function(name, window, pane)
+  window:set_right_status("NOT IN A MODE")
+end)
+```
+#### Using the wezterm.on("update-right-status", ...) event
+Alternatively you can show some other text in the right status by making a simple if statement in your `wezterm.on` function:
 ```lua
 wezterm.on("update-right-status", function(window, _)
 	if modal.get_mode(window) then -- is nil if you are not in a mode
