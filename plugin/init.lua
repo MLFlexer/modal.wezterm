@@ -94,6 +94,62 @@ local function set_right_status(window, name)
 	end
 end
 
+---Activates mode
+---@param name string
+---@param activate_key_table_params? table -- parameters as defined here: https://wezfurlong.org/wezterm/config/lua/keyassignment/ActivateKeyTable.html
+---@return KeyAssignment
+local function activate_mode(name, activate_key_table_params)
+	if name == "copy_mode" then
+		return wezterm.action.Multiple({
+			wezterm.action.ActivateCopyMode,
+			wezterm.action_callback(function(window, pane)
+				wezterm.emit("modal.enter", name, window, pane)
+			end),
+		})
+	elseif name == "search_mode" then
+		return wezterm.action.Multiple({
+			wezterm.action.Search({ CaseSensitiveString = "" }),
+			wezterm.action_callback(function(window, pane)
+				wezterm.emit("modal.enter", name, window, pane)
+			end),
+		})
+	else
+		local parameters = activate_key_table_params or { one_shot = false }
+		parameters.name = name
+
+		return wezterm.action.Multiple({
+			wezterm.action.ActivateKeyTable(parameters),
+			wezterm.action_callback(function(window, pane)
+				wezterm.emit("modal.enter", name, window, pane)
+			end),
+		})
+	end
+end
+
+---Exits active mode
+---@param name string
+---@return KeyAssignment
+local function exit_mode(name)
+	return wezterm.action.Multiple({
+		wezterm.action.PopKeyTable(),
+		wezterm.action_callback(function(window, pane)
+			wezterm.emit("modal.exit", name, window, pane)
+		end),
+	})
+end
+
+---Exits all active modes
+---@param name string
+---@return KeyAssignment
+local function exit_all_modes(name)
+	return wezterm.action.Multiple({
+		wezterm.action.ClearKeyTableStack(),
+		wezterm.action_callback(function(window, pane)
+			wezterm.emit("modal.exit_all", name, window, pane)
+		end),
+	})
+end
+
 local function apply_to_config(config)
 	enable_defaults("https://github.com/MLFlexer/modal.wezterm")
 	local icons = {
@@ -142,18 +198,12 @@ local function apply_to_config(config)
 	table.insert(config.keys, {
 		key = "n",
 		mods = "ALT",
-		action = wezterm.action.ActivateKeyTable({
-			name = "Scroll",
-			one_shot = false,
-		}),
+		action = activate_mode("Scroll"),
 	})
 	table.insert(config.keys, {
 		key = "u",
 		mods = "ALT",
-		action = wezterm.action.ActivateKeyTable({
-			name = "UI",
-			one_shot = false,
-		}),
+		action = activate_mode("UI"),
 	})
 end
 
@@ -166,4 +216,7 @@ return {
 	key_tables = key_tables,
 	enable_defaults = enable_defaults,
 	apply_to_config = apply_to_config,
+	activate_mode = activate_mode,
+	exit_mode = exit_mode,
+	exit_all_modes = exit_all_modes,
 }
