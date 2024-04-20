@@ -1,5 +1,8 @@
 local wezterm = require("wezterm")
 
+-- see https://wezfurlong.org/wezterm/config/lua/keyassignment/index.html
+---@alias KeyAssignment any
+
 ---@alias key_bind {key: string, mods: string|nil, action: any}
 ---@alias key_table key_bind[]
 ---@alias mode { name: string, key_table_name: string, status_text: string | nil}
@@ -78,10 +81,16 @@ end
 
 ---sets the current modal status to the right status
 ---@param window any
-local function set_right_status(window)
-	local mode = get_mode(window)
-	if mode then
+---@param name? string
+local function set_right_status(window, name)
+	if name then
+		local mode = modes[name]
 		window:set_right_status(mode.status_text)
+	else
+		local mode = get_mode(window)
+		if mode then
+			window:set_right_status(mode.status_text)
+		end
 	end
 end
 
