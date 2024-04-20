@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm")
 
 -- From smartsplits.nvim
 local function is_vim(pane)
@@ -162,8 +163,11 @@ return {
 	get_hint_status_text = get_hint_status_text,
 	key_table = {
 		-- Cancel the mode by pressing escape
-		{ key = "Escape", action = "PopKeyTable" },
-		{ key = "c", mods = "CTRL", action = "PopKeyTable" },
+		{
+			key = "Escape",
+			action = modal.exit_mode,
+		},
+		{ key = "c", mods = "CTRL", action = modal.exit_mode },
 
 		-- Activate panes
 		activate_pane_direction("h", "Left", "", "CTRL"),
