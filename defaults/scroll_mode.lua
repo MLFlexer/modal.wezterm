@@ -88,8 +88,8 @@ return {
 	get_hint_status_text = get_hint_status_text,
 	key_table = {
 		-- Cancel the mode by pressing escape
-		{ key = "Escape", modal.exit_mode },
-		{ key = "c", mods = "CTRL", action = modal.exit_mode },
+		{ key = "Escape", action = modal.exit_mode("Scroll") },
+		{ key = "c", mods = "CTRL", action = modal.exit_mode("Scroll") },
 
 		{ key = "UpArrow", action = act.ScrollByLine(-1) },
 		{ key = "DownArrow", action = act.ScrollByLine(1) },
@@ -116,13 +116,7 @@ return {
 
 		{ key = "z", action = wezterm.action.TogglePaneZoomState },
 
-		{
-			key = "v",
-			action = modal.activate_mode("copy_mode"),
-		},
-		{
-			key = "/",
-			action = modal.activate_mode("search_mode"),
-		},
+		{ key = "v", action = modal.activate_mode("copy_mode") },
+		{ key = "/", action = modal.activate_mode("search_mode") },
 	},
 }
