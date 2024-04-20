@@ -131,7 +131,7 @@ end
 ---@return KeyAssignment
 local function exit_mode(name)
 	return wezterm.action.Multiple({
-		wezterm.action.PopKeyTable(),
+		"PopKeyTable",
 		wezterm.action_callback(function(window, pane)
 			wezterm.emit("modal.exit", name, window, pane)
 		end),
