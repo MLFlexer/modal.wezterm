@@ -167,3 +167,6 @@ wezterm.on("update-right-status", function(window, _)
   end
 end)
 ```
+
+## Credits
+Thanks to [github.com/twilsoft/wezmode](https://github.com/twilsoft/wezmode) for the inspiration to make this plugin. I have created this plugin as a lua alternative to wezmode, as I wanted to extend wezmode, but with lua instead of typescript.
