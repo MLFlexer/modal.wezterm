@@ -94,6 +94,21 @@ local function set_right_status(window, name)
 	end
 end
 
+---sets the window title by emitting a OSC 2 escape sequence
+---@param pane any
+---@param name string
+local function set_window_title(pane, name)
+	if name then
+		pane:inject_output("\x1b]2;" .. name .. "\x1b\\")
+	end
+end
+
+---resets the window title to the foreground process by emitting a OSC 2 escape sequence
+---@param pane any
+local function reset_window_title(pane)
+	pane:inject_output("\x1b]2;" .. string.gsub(pane:get_foreground_process_name(), "(.*[/\\])(.*)", "%2") .. "\x1b\\")
+end
+
 ---Activates mode
 ---@param name string
 ---@param activate_key_table_params? table -- parameters as defined here: https://wezfurlong.org/wezterm/config/lua/keyassignment/ActivateKeyTable.html
