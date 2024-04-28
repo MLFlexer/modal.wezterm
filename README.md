@@ -17,18 +17,18 @@ This plugin adds great opt-in default modes along with optional visual indicator
 ## Default modes
 I have included some default modes which are opt-in as to improve performance for all users.
 
+### Copy mode, with Search and Visual submodes
+![Copy mode](https://github.com/MLFlexer/modal.wezterm/assets/75012728/d11d088c-f99a-464f-8de6-2a447da1e57a)
+![Visual mode](https://github.com/MLFlexer/modal.wezterm/assets/75012728/b8c63098-f8e3-481e-8881-b617d6b87a80)
+![Search mode](https://github.com/MLFlexer/modal.wezterm/assets/75012728/ee8a9881-2c7f-499f-ba66-f55f81360869)
+
 ### UI mode
 UI mode has vim-like bindings to navigate and modify panes, tabs and other UI elements.
-![image](https://github.com/MLFlexer/modal.wezterm/assets/75012728/bce555c3-e9ca-4749-ba27-6ab8121e288b)
+![UI mode](https://github.com/MLFlexer/modal.wezterm/assets/75012728/07545d3d-2f94-44df-8f02-cb9ff0ee6d0a)
 
 ### Scroll mode
 In scroll mode you can scroll with familiar vim bindings.
-![image](https://github.com/MLFlexer/modal.wezterm/assets/75012728/c0c906e1-fccf-4d28-969f-4e05088a4730)
-
-### Search & Copy modes
-This only provides an option to add hints or mode indicator to Wezterms buildin Search and Copy modes. i.e. no keybinds are added!
-![image](https://github.com/MLFlexer/modal.wezterm/assets/75012728/51292957-4580-494b-aedf-9b84cdf81e41)
-![image](https://github.com/MLFlexer/modal.wezterm/assets/75012728/477089b8-ae80-4f3b-821c-bb29c545408c)
+![Scroll mode](https://github.com/MLFlexer/modal.wezterm/assets/75012728/52e792dd-580d-4bea-a31f-e5f589212217)
 
 ## Setup
 It is recommended to do the setup with some [Customization](#Customization). However if you just want to try it out you can follow the [Preset](#Preset)
