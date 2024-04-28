@@ -6,6 +6,7 @@ Add keybindings which operate with vim-like modal bindings to accelerate your wo
 This plugin adds great opt-in default modes along with optional visual indicators and hints for the keybindings.
 
 #### Default Copy/Visual/Search mode
+Improvements to [Wezterms CopyMode](https://wezfurlong.org/wezterm/copymode.html) with vim keybindings
 ![Demo of Copy/Search/Visual mode](https://github.com/MLFlexer/modal.wezterm/assets/75012728/08c2af5c-c75a-4764-bd63-729a91080f79)
 
 
