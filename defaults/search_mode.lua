@@ -43,14 +43,14 @@ local function get_hint_status_text(hint_icons, hint_colors, mode_colors)
 		{ Foreground = { Color = hint_colors.key } },
 		{ Text = "Enter: " },
 		{ Foreground = { Color = hint_colors.hint } },
-		{ Text = "Prev result" },
+		{ Text = "Accep pattern" },
 		{ Foreground = { Color = hint_colors.key_hint_seperator } },
 		{ Text = hint_icons.key_hint_seperator },
 		-- ...
 		{ Foreground = { Color = hint_colors.key } },
 		{ Text = "Esc: " },
 		{ Foreground = { Color = hint_colors.hint } },
-		{ Text = "Exit mode " },
+		{ Text = "End search" },
 		-- ...
 		{ Attribute = { Intensity = "Bold" } },
 		{ Foreground = { Color = mode_colors.bg } },
