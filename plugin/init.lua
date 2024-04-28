@@ -227,7 +227,7 @@ local function apply_to_config(config)
 		colors,
 		{ bg = config.colors.ansi[3], fg = config.colors.tab_bar.active_tab.bg_color }
 	)
-	add_mode("Visual", require("visual_mode").key_table, status_text)
+	add_mode("Visual", {}, status_text)
 
 	config.key_tables = key_tables
 	table.insert(config.keys, {
@@ -241,7 +241,7 @@ local function apply_to_config(config)
 		action = activate_mode("UI"),
 	})
 	table.insert(config.keys, {
-		key = "m",
+		key = "c",
 		mods = "ALT",
 		action = activate_mode("copy_mode"),
 	})
