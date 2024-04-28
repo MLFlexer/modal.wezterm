@@ -246,5 +246,35 @@ return {
 
 		-- New window
 		{ key = "N", mods = "SHIFT", action = wezterm.action.SpawnWindow },
+
+		-- Move pane to new window
+		{
+			key = "P",
+			mods = "SHIFT",
+			action = wezterm.action.Multiple({
+				wezterm.action_callback(function(_, pane)
+					pane:move_to_new_window()
+				end),
+				modal.exit_mode("UI"),
+			}),
+		},
+		{
+			key = "p",
+			action = wezterm.action.Multiple({
+				wezterm.action_callback(function(_, pane)
+					pane:move_to_new_tab()
+				end),
+				modal.exit_mode("UI"),
+			}),
+		},
+		-- font size
+		{ key = "+", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
+		{ key = "-", mods = "CTRL", action = wezterm.action.DecreaseFontSize },
+
+		-- toggle fullscreen
+		{
+			key = "f",
+			action = wezterm.action.ToggleFullScreen,
+		},
 	},
 }
