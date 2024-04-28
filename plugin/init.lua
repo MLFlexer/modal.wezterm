@@ -145,12 +145,21 @@ end
 ---@param name string
 ---@return KeyAssignment
 local function exit_mode(name)
-	return wezterm.action.Multiple({
-		"PopKeyTable",
-		wezterm.action_callback(function(window, pane)
-			wezterm.emit("modal.exit", name, window, pane)
-		end),
-	})
+	if name == "copy_mode" then
+		return wezterm.action.Multiple({
+			wezterm.action.CopyMode("Close"),
+			wezterm.action_callback(function(window, pane)
+				wezterm.emit("modal.exit", name, window, pane)
+			end),
+		})
+	else
+		return wezterm.action.Multiple({
+			"PopKeyTable",
+			wezterm.action_callback(function(window, pane)
+				wezterm.emit("modal.exit", name, window, pane)
+			end),
+		})
+	end
 end
 
 ---Exits all active modes
