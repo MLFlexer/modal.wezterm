@@ -221,6 +221,11 @@ local function apply_to_config(config)
 	add_mode("Visual", {}, status_text)
 
 	config.key_tables = key_tables
+
+	if config.keys == nil then
+		config.keys = {}
+	end
+
 	table.insert(config.keys, {
 		key = "n",
 		mods = "ALT",
