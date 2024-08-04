@@ -40,6 +40,13 @@ local wezterm = require("wezterm")
 local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm")
 modal.apply_to_config(config)
 ```
+This will add the keybindings to enter and exit modes:
+* `ALT-u` to enter UI mode from normal mode
+* `ALT-c` to enter Copy mode from normal mode
+* `v` to enter visual mode from Copy mode
+* `/` to enter search mode from Copy mode
+* `ALT-n` to enter Scroll mode from normal mode
+* `esc` or `CTRL-c` to leave current non-normal mode
 
 ### Customization
 1. Require the plugin:
