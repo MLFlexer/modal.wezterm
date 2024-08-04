@@ -185,48 +185,39 @@ local function apply_to_config(config)
 		key_hint_seperator = "  ",
 		mod_seperator = "-",
 	}
+
+	if config.colors == nil then
+		config.colors = wezterm.color.get_default_colors()
+	end
+
 	local colors = {
-		key_hint_seperator = config.colors.tab_bar.active_tab.fg_color,
-		key = config.colors.tab_bar.active_tab.fg_color,
-		hint = config.colors.tab_bar.active_tab.fg_color,
-		bg = config.colors.tab_bar.active_tab.bg_color,
-		left_bg = config.colors.tab_bar.background,
+		key_hint_seperator = config.colors.foreground,
+		key = config.colors.foreground,
+		hint = config.colors.foreground,
+		bg = config.colors.background,
+		left_bg = config.colors.background,
 	}
 
-	local status_text = require("ui_mode").get_hint_status_text(
-		icons,
-		colors,
-		{ bg = config.colors.ansi[2], fg = config.colors.tab_bar.active_tab.bg_color }
-	)
+	local fg_status_color = config.colors.background
+	local status_text =
+		require("ui_mode").get_hint_status_text(icons, colors, { bg = config.colors.ansi[2], fg = fg_status_color })
 
 	add_mode("UI", require("ui_mode").key_table, status_text)
 
-	status_text = require("scroll_mode").get_hint_status_text(
-		icons,
-		colors,
-		{ bg = config.colors.ansi[7], fg = config.colors.tab_bar.active_tab.bg_color }
-	)
+	status_text =
+		require("scroll_mode").get_hint_status_text(icons, colors, { bg = config.colors.ansi[7], fg = fg_status_color })
 	add_mode("Scroll", require("scroll_mode").key_table, status_text)
 
-	status_text = require("copy_mode").get_hint_status_text(
-		icons,
-		colors,
-		{ bg = config.colors.ansi[4], fg = config.colors.tab_bar.active_tab.bg_color }
-	)
+	status_text =
+		require("copy_mode").get_hint_status_text(icons, colors, { bg = config.colors.ansi[4], fg = fg_status_color })
 	add_mode("copy_mode", require("copy_mode").key_table, status_text)
 
-	status_text = require("search_mode").get_hint_status_text(
-		icons,
-		colors,
-		{ bg = config.colors.ansi[6], fg = config.colors.tab_bar.active_tab.bg_color }
-	)
+	status_text =
+		require("search_mode").get_hint_status_text(icons, colors, { bg = config.colors.ansi[6], fg = fg_status_color })
 	add_mode("search_mode", require("search_mode").key_table, status_text)
 
-	status_text = require("visual_mode").get_hint_status_text(
-		icons,
-		colors,
-		{ bg = config.colors.ansi[3], fg = config.colors.tab_bar.active_tab.bg_color }
-	)
+	status_text =
+		require("visual_mode").get_hint_status_text(icons, colors, { bg = config.colors.ansi[3], fg = fg_status_color })
 	add_mode("Visual", {}, status_text)
 
 	config.key_tables = key_tables
