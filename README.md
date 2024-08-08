@@ -48,6 +48,8 @@ This will add the keybindings to enter and exit modes:
 * `ALT-n` to enter Scroll mode from normal mode
 * `esc` or `CTRL-c` to leave current non-normal mode
 
+Checkout the [keybinding descriptions](/keybinds.md)
+
 ### Customization
 1. Require the plugin:
 ```lua
