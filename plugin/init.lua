@@ -186,8 +186,12 @@ local function apply_to_config(config)
 		mod_seperator = "-",
 	}
 
-	if config.colors == nil then
-		config.colors = wezterm.color.get_default_colors()
+	if not config.colors then
+    if config.color_scheme then
+      config.colors = wezterm.color.get_builtin_schemes()[config.color_scheme]
+    else
+      config.colors = wezterm.color.get_default_colors()
+    end
 	end
 
 	local colors = {
