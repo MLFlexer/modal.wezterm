@@ -39,6 +39,7 @@ Add the following to the bottom of your config:
 local wezterm = require("wezterm")
 local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm")
 modal.apply_to_config(config)
+modal.set_default_keys(config)
 ```
 This will add the keybindings to enter and exit modes:
 * `ALT-u` to enter UI mode from normal mode
