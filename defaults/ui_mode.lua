@@ -165,9 +165,9 @@ return {
 		-- Cancel the mode by pressing escape
 		{
 			key = "Escape",
-			action = modal.exit_mode("UI"),
+			action = modal.exit_mode("ui_mode"),
 		},
-		{ key = "c", mods = "CTRL", action = modal.exit_mode("UI") },
+		{ key = "c", mods = "CTRL", action = modal.exit_mode("ui_mode") },
 
 		-- Activate panes
 		activate_pane_direction("h", "Left", "", "CTRL"),
@@ -255,7 +255,7 @@ return {
 				wezterm.action_callback(function(_, pane)
 					pane:move_to_new_window()
 				end),
-				modal.exit_mode("UI"),
+				modal.exit_mode("ui_mode"),
 			}),
 		},
 		{
@@ -264,7 +264,7 @@ return {
 				wezterm.action_callback(function(_, pane)
 					pane:move_to_new_tab()
 				end),
-				modal.exit_mode("UI"),
+				modal.exit_mode("ui_mode"),
 			}),
 		},
 		-- font size

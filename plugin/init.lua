@@ -205,12 +205,11 @@ local function apply_to_config(config)
 	local fg_status_color = config.colors.background
 	local status_text =
 		require("ui_mode").get_hint_status_text(icons, colors, { bg = config.colors.ansi[2], fg = fg_status_color })
-
-	add_mode("UI", require("ui_mode").key_table, status_text)
+	add_mode("ui_mode", require("ui_mode").key_table, status_text)
 
 	status_text =
 		require("scroll_mode").get_hint_status_text(icons, colors, { bg = config.colors.ansi[7], fg = fg_status_color })
-	add_mode("Scroll", require("scroll_mode").key_table, status_text)
+	add_mode("scroll_mode", require("scroll_mode").key_table, status_text)
 
 	status_text =
 		require("copy_mode").get_hint_status_text(icons, colors, { bg = config.colors.ansi[4], fg = fg_status_color })
@@ -222,7 +221,7 @@ local function apply_to_config(config)
 
 	status_text =
 		require("visual_mode").get_hint_status_text(icons, colors, { bg = config.colors.ansi[3], fg = fg_status_color })
-	add_mode("Visual", {}, status_text)
+	add_mode("visual_mode", {}, status_text)
 
 	config.key_tables = key_tables
 end
@@ -234,12 +233,12 @@ local function set_default_keys(config)
   table.insert(config.keys, {
     key = "n",
     mods = "ALT",
-    action = activate_mode("Scroll"),
+    action = activate_mode("scroll_mode"),
   })
   table.insert(config.keys, {
     key = "u",
     mods = "ALT",
-    action = activate_mode("UI"),
+    action = activate_mode("ui_mode"),
   })
   table.insert(config.keys, {
     key = "c",
