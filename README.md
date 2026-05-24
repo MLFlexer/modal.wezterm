@@ -1,3 +1,8 @@
+> [!WARNING]
+> This project is archived and no longer maintained. 
+> I'm currently focusing on my PhD and don't find it interesting to work on this anymore. 
+> Please fork/use one of the forks instead 😃
+
 # modal.wezterm
 Vim-like modal keybindings for your terminal! ✌️
 
