@@ -88,8 +88,8 @@ return {
 	get_hint_status_text = get_hint_status_text,
 	key_table = {
 		-- Cancel the mode by pressing escape
-		{ key = "Escape", action = modal.exit_mode("Scroll") },
-		{ key = "c", mods = "CTRL", action = modal.exit_mode("Scroll") },
+		{ key = "Escape", action = modal.exit_mode("scroll_mode") },
+		{ key = "c", mods = "CTRL", action = modal.exit_mode("scroll_mode") },
 
 		{ key = "UpArrow", action = act.ScrollByLine(-1) },
 		{ key = "DownArrow", action = act.ScrollByLine(1) },

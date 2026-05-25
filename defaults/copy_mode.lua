@@ -164,7 +164,7 @@ return {
 							wezterm.action.CopyMode({ SetSelectionMode = "Cell" }),
 							wezterm.action_callback(function(_, _)
 								wezterm.GLOBAL.visual_mode = "Cell"
-								wezterm.emit("modal.enter", "Visual", window, pane)
+								wezterm.emit("modal.enter", "visual_mode", window, pane)
 							end),
 						}),
 						pane
@@ -189,7 +189,7 @@ return {
 							wezterm.action.CopyMode({ SetSelectionMode = "Line" }),
 							wezterm.action_callback(function(_, _)
 								wezterm.GLOBAL.visual_mode = "Line"
-								wezterm.emit("modal.enter", "Visual", window, pane)
+								wezterm.emit("modal.enter", "visual_mode", window, pane)
 							end),
 						}),
 						pane
@@ -214,7 +214,7 @@ return {
 							wezterm.action.CopyMode({ SetSelectionMode = "Block" }),
 							wezterm.action_callback(function(_, _)
 								wezterm.GLOBAL.visual_mode = "Block"
-								wezterm.emit("modal.enter", "Visual", window, pane)
+								wezterm.emit("modal.enter", "visual_mode", window, pane)
 							end),
 						}),
 						pane
@@ -239,7 +239,7 @@ return {
 							wezterm.action.CopyMode({ SetSelectionMode = "SemanticZone" }),
 							wezterm.action_callback(function(_, _)
 								wezterm.GLOBAL.visual_mode = "SemanticZone"
-								wezterm.emit("modal.enter", "Visual", window, pane)
+								wezterm.emit("modal.enter", "visual_mode", window, pane)
 							end),
 						}),
 						pane
